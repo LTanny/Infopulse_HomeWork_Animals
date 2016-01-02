@@ -1,0 +1,17 @@
+
+body{
+    font-size: 20px;
+    line-height: 30px;
+   }
+
+#animalsName{
+    color: firebrick;
+    font-size: 30px;
+}
+
+#animalsInfo{
+    width: 320px;
+    color: darkslategray;
+    font-size: 16px;
+    line-height: 20px;
+}
