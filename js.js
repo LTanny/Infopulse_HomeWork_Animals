@@ -15,7 +15,7 @@ var animals=[
   },
   {
   	name:'Aquila',
-    class: 'bird',
+    class:'bird',
     info:'Aquila (Aquila Brisson, 1760) è un genere di uccelli rapaci della famiglia Accipitridae',
     img:'https://upload.wikimedia.org/wikipedia/commons/9/91/GoldenEagle-Nova.jpg',
     readMore:'https://it.wikipedia.org/wiki/Aquila'
@@ -25,59 +25,59 @@ var animals=[
 ];
     
 function animalsKingdom(containerName){
-	var nameAnimals=document.querySelector(containerName);
-	var errorAnimals=nameAnimals.querySelector('#error');
+	var nameAnimals = document.querySelector(containerName);
+	var errorAnimals = nameAnimals.querySelector('#error');
 
-		function show(animalName) {
+		function show(animalName){
   		    var animal = findAnimal(animalName);
     
-    	       if(animal) {
-    		      hideNone();
+    	       if(animal){
+    		      hideError();
 	    	      render(animal);
-   	        } else {
+   	        }else{
     		  showError('Ненайдено ', animalName);
     	}  
  	 }
-   function findAnimal(animalName) {
-  	for (var i = 0; i < animals.length; i++) {
-      if (animals[i].name === animalName) {
+   function findAnimal(animalName){
+  	for(var i = 0; i < animals.length; i++){
+      if(animals[i].name === animalName){
         return animals[i];
       }
     }
     
     return false;
   }
-   function render(animal) {
-     var animalsImg=nameAnimals.querySelector('#animalsImage');
+   function render(animal){
+     var animalsImg = nameAnimals.querySelector('#animalsImage');
         animalsImg.setAttribute('src', animal.img);
-        animalsImg.style.width="300px";
-        animalsImg.style.height="200px";
+        animalsImg.style.width = "300px";
+        animalsImg.style.height = "200px";
        
         nameAnimals.querySelector('#animalsName').innerText = animal.name;
        
         nameAnimals.querySelector('#animalsInfo').innerText = animal.info;
         nameAnimals.querySelector('#animalsClass').innerText = 'Class: ' +  animal.class;
        
-     var animalReadMore=nameAnimals.querySelector('#animalsReadMore');
+     var animalReadMore = nameAnimals.querySelector('#animalsReadMore');
         animalReadMore.setAttribute('href', animal.readMore);
         animalReadMore.innerText='Read More...';
   }
-   function showNone(errorMessage, errorObject) {
-  	errorContainer.innerText = errorMessage + errorObject;
-    errorContainer.style.display = 'block';
+   function showError(errorMessage, errorObject){
+       errorAnimals.innerText = errorMessage + errorObject;
+       errorAnimals.style.display = 'block';
     
   	console.error(errorMessage, errorObject);
+ }
+  
+ function hideError(){
+ 	errorAnimals.style.display = 'none';
   }
   
-  function hideNone() {
-  	errorAnimals.style.display = 'none';
-  }
-  
-  return {
-  	show: show
+  return{
+  	show:show
   };
 }
-var butt=function(value){
-    var animalsKingdo = new animalsKingdom('#animals');
-    animalsKingdo.show(value);
-                      }
+ var animalsKingdo = new animalsKingdom('#animals');
+ var btn = function(value) {
+     animalsKingdo.show(value);
+}
